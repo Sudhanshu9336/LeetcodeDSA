@@ -5,7 +5,8 @@ public:
         int count=0;
         while(ans>0){
             if(ans&1)count++;
-           ans= ans>>1;
+           //ans= ans>>1;
+           ans=ans/2;
         }
         return count;
         
