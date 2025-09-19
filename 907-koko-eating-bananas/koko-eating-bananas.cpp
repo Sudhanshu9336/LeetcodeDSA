@@ -7,7 +7,7 @@ public:
             int mid = left + (right - left) / 2;
             long long hours = 0;
             for (int pile : piles) {
-                hours += (pile + mid - 1) / mid; 
+                hours =hours+ceil((double)pile/mid);
             }
             if (hours <= h) {
                 right = mid; 
