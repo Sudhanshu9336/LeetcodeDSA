@@ -21,8 +21,9 @@ bool solve(int index,vector<int>&nums,int target,vector<vector<int>>&dp){
             sum=sum+val;
         }
         if(sum%2!=0)return false;
-        vector<vector<int>>dp(n,vector<int>(sum+1,-1));
-        return solve(0,nums,sum/2,dp);
+        int target=sum/2;
+        vector<vector<int>>dp(n,vector<int>(target+1,-1));
+        return solve(0,nums,target,dp);
     }
 };
 
