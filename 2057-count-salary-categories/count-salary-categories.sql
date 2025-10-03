@@ -13,3 +13,4 @@ select
 "Average Salary" as category,count(income) as accounts_count
 from Accounts
 where income between 20000 and 50000
+
