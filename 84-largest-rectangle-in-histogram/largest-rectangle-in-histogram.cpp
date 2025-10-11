@@ -13,7 +13,6 @@ public:
                 st.pop();
             }
             if (st.empty()) {
-                st.push(i);
                 rightsmallerindex[i] = n;
             } else {
                rightsmallerindex[i] = st.top();
