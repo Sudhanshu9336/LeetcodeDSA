@@ -27,9 +27,8 @@ int findposition(vector<int>&inorder,int element,int instart,int inend){
     int element=preorder[prestart++];
     TreeNode* root=new TreeNode(element);
     int position=findposition(inorder,element,instart,inend);
- 
     root->left = solve(preorder, inorder, prestart, instart, position - 1, n);
-root->right = solve(preorder, inorder, prestart, position + 1, inend, n);
+   root->right = solve(preorder, inorder, prestart, position + 1, inend, n);
 
     return root;
 
