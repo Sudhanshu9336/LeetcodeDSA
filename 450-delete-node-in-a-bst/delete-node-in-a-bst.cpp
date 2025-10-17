@@ -1,14 +1,12 @@
 class Solution {
 public:
-    // Helper function to find inorder successor (leftmost node in right subtree)
+
     TreeNode* getInorderSuccessor(TreeNode* root) {
         while (root && root->left != nullptr) {
             root = root->left;
         }
         return root;
     }
-
-    // Main recursive delete function
     TreeNode* deletes(TreeNode* root, int key) {
         if (root == nullptr) return nullptr;
 
