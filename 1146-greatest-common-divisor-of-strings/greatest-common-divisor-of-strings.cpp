@@ -4,7 +4,7 @@ public:
             if (str1 + str2 != str2 + str1){
             return "";
             }
-             int g = __gcd(str1.size(), str2.size());
+             int g = gcd(str1.size(), str2.size());
               return str1.substr(0, g);
 
     }
