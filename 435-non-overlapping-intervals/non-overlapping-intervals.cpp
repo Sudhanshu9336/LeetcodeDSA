@@ -1,11 +1,8 @@
  bool cmp(const vector<int> &a, const vector<int> &b) {
     return a[1] < b[1];
 }
-
-
 class Solution {
 public:
-
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
            if(intervals.empty()) return 0;
         int count=1;
