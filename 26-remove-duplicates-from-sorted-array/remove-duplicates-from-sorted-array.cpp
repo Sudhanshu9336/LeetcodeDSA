@@ -1,10 +1,8 @@
+
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-    set<int>seti;
-    for(auto val:nums){
-        seti.insert(val);
-    }
+    set<int>seti(nums.begin(),nums.end());
      nums.assign(seti.begin(),seti.end());
     return seti.size();
     }
