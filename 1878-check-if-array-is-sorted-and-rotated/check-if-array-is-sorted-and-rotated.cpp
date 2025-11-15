@@ -11,6 +11,9 @@ public:
         if(nums[n-1]>nums[0]){
             c++;
         }
-        return c<=1;
+        if(c>1){
+            return false;
+        }
+        return true;
     }
 };
