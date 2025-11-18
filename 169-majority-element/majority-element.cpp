@@ -5,10 +5,17 @@ public:
         for(auto val:nums){
             map[val]++;
         }
-        priority_queue<pair<int,int>>pq;
+        // priority_queue<pair<int,int>>pq;
+        // for(auto it:map){
+        //     pq.push({it.second,it.first});
+        // }
+        // return pq.top().second;
+        int m=nums.size()/2;
         for(auto it:map){
-            pq.push({it.second,it.first});
+            if(it.second>m){
+                return it.first;
+      }
         }
-        return pq.top().second;
+        return -1;
     }
 };
