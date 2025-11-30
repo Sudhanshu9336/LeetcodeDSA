@@ -8,6 +8,9 @@ public:
             if(nums[i]==0){
                 count++;
             }
+            if(count>1){
+                return ans;
+            }
             if(nums[i]!=0){
             pro=pro*nums[i];
             }
