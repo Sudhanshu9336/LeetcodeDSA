@@ -23,7 +23,7 @@ void dfs(int node,vector<vector<int>>&list,vector<int>&vis){
         vector<int>vis(n,0);
         int count=0;
         for(int i=0;i<n;i++){
-            if(vis[i]==0){
+            if(vis[i]==0){ 
                 count++;
                 dfs(i,list,vis);
             }
