@@ -1,9 +1,18 @@
-
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-    set<int>seti(nums.begin(),nums.end());
-     nums.assign(seti.begin(),seti.end());
-    return seti.size();
+        int n = nums.size();
+        if(n == 0) return 0;
+
+        int i = 0; 
+        
+        for(int j = 1; j < n; j++) {
+            if(nums[j] != nums[i]) {
+                i++;               // move unique pointer
+                nums[i] = nums[j]; // store unique value
+            }
+        }
+        
+        return i + 1; 
     }
 };
