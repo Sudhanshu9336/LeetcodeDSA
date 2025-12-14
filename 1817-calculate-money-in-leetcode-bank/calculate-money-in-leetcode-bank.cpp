@@ -1,12 +1,19 @@
 class Solution {
 public:
     int totalMoney(int n) {
-        int weeks = n / 7;
-        int days = n % 7;
+        int money = 0;
+        int monday = 1;
 
-        int fullWeeksSum = 7 * weeks * (weeks + 1) / 2 + 21 * weeks;
-        int remainingSum = days * (weeks + 1) + days * (days - 1) / 2;
+        while (n > 0) {
+            int day = monday;
+            for (int i = 0; i < 7 && n > 0; i++) {
+                money += day;
+                day++;
+                n--;
+            }
+            monday++;
+        }
 
-        return fullWeeksSum + remainingSum;
+        return money;
     }
 };
