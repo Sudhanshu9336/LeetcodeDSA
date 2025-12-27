@@ -8,7 +8,6 @@ public:
         vector<int> leftsmallerindex(n);
 
         for (int i = n - 1; i >= 0; i--) {
-
             while (!st.empty() && heights[st.top()] >= heights[i]) {
                 st.pop();
             }
