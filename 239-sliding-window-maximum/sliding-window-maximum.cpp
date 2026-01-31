@@ -3,36 +3,26 @@ public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         int n=nums.size();
         vector<int>ans;
-        deque<int>q;
+        deque<int>d;
         for(int i=0;i<n;i++){
-            while(!q.empty()&&q.front()<=i-k){
-                q.pop_front();
+            if(!d.empty()&&d.front()<=i-k){
+               d.pop_front();
             }
-            while(!q.empty()&&nums[q.back()]<=nums[i]){
-                q.pop_back();
+            while(!d.empty()&&nums[d.back()]<=nums[i]){
+                d.pop_back();
             }
-            q.push_back(i);
+            d.push_back(i);
             if(i>=k-1){
-                ans.push_back(nums[q.front()]);
+                ans.push_back(nums[d.front()]);
             }
         }
         return ans;
     }
 };
+//Final Algorithm Summary
 
-// class Solution {
-// public:
-//     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
-//         int i=0;
-//         int j=k-1;
-//         int n=nums.size();
-//         vector<int>ans(n-k+1);
-//         while(j<n){
-//               int maxi = *max_element(nums.begin() + i, nums.begin() + j + 1);
-//             ans[i]=maxi;
-//             j++;
-//             i++;
-//         }
-//         return ans;
-//     }
-// };
+// Deque ko decreasing order mein maintain karo
+
+// Front hamesha max ka index rakhega
+
+// Har index ek baar add aur ek baar remove hota hai
