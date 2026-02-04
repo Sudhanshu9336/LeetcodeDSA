@@ -6,8 +6,6 @@ public:
 
         vector<int> row;
         vector<int> col;
-
-        // Row minimum
         for (int i = 0; i < n; i++) {
             int mini = INT_MAX;
             for (int j = 0; j < m; j++) {
@@ -15,8 +13,6 @@ public:
             }
             row.push_back(mini);
         }
-
-        // Column maximum
         for (int j = 0; j < m; j++) {
             int maxi = INT_MIN;
             for (int i = 0; i < n; i++) {
@@ -24,7 +20,7 @@ public:
             }
             col.push_back(maxi);
         }
-        
+
         vector<int> ans;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
