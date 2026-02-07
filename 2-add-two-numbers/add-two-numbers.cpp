@@ -14,6 +14,8 @@ public:
         ListNode* dummy=new ListNode(0);
         ListNode* cur=dummy;
         int carry=0;
+
+        // Agar teenon me se koi ek bhi true hai → loop chalega.
         while(l1!=NULL||l2!=NULL||carry!=0){
             int n=(l1!=NULL)?l1->val:0;
               int m=(l2!=NULL)?l2->val:0;
