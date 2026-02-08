@@ -1,38 +1,41 @@
 class MyQueue {
-    stack<int>st1;
-    stack<int>st2;
+    stack<int>s1,s2;
 public:
     MyQueue() {
         
     }
     
     void push(int x) {
-        while(!st1.empty()){
-            st2.push(st1.top());
-            st1.pop();
-        }
-        st1.push(x);
-        while(!st2.empty()){
-            st1.push(st2.top());
-            st2.pop();
-        }
-
-    }
-
-    
-    int pop() {
-        int val=st1.top();
-        st1.pop();
-        return val;
+        s1.push(x);
         
     }
     
+    int pop() {
+        if(s2.empty()){
+            while(!s1.empty()){
+                s2.push(s1.top());
+                s1.pop();
+            }
+        }
+        int val=s2.top();
+        s2.pop();
+        return val;
+    }
+
+//we are using two stack one for the pushing the new element and one for the popping deque karnee liye use karte hai
     int peek() {
-        return st1.top();
+           if(s2.empty()){
+            while(!s1.empty()){
+                s2.push(s1.top());
+                s1.pop();
+            }
+        }
+        return s2.top();
     }
     
     bool empty() {
-        return st1.empty();
+        return s1.empty()&&s2.empty();
+        
     }
 };
 
