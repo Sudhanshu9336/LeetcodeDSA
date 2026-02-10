@@ -11,20 +11,23 @@
  */
 class Solution {
 public:
-void inorder(TreeNode* node,vector<int>&arr){
-    if(node==NULL)return ;
-    inorder(node->left,arr);
-    arr.push_back(node->val);
-    inorder(node->right,arr);
+void minidi(TreeNode* root,vector<int>&arr){
+    if(root==NULL){
+        return ;
+    }
+    minidi(root->left,arr);
+    arr.push_back(root->val);
+    minidi(root->right,arr);
 }
     int minDiffInBST(TreeNode* root) {
+        if(root==NULL)return 0;
         vector<int>arr;
-        inorder(root,arr);
-        int mi=INT_MAX;
+        minidi(root,arr);
+        int mini=INT_MAX;
         for(int i=1;i<arr.size();i++){
-            mi=min(mi,arr[i]-arr[i-1]);
+            mini=min(mini,arr[i]-arr[i-1]);
         }
-        return mi;
+        return mini;
 
     }
 };
