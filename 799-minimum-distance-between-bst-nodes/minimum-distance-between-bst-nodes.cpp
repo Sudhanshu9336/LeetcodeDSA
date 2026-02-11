@@ -28,6 +28,5 @@ void minidi(TreeNode* root,vector<int>&arr){
             mini=min(mini,arr[i]-arr[i-1]);
         }
         return mini;
-
     }
 };
