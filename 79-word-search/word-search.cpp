@@ -1,37 +1,39 @@
 class Solution {
 public:
-    bool find(vector<vector<char>>& board, int i, int j, int indx, string& word) {
-        if (indx == word.size()) return true;
-
-        int n = board.size();
-        int m = board[0].size();
-
-        if (i < 0 || j < 0 || i >= n || j >= m || board[i][j] != word[indx])
-            return false;
-
-        char ch = board[i][j];
-        board[i][j] = '#'; // mark as visited
-
-        bool result=find(board, i + 1, j, indx + 1, word)||
-        find(board, i, j + 1, indx + 1, word)||
-        find(board, i - 1, j, indx + 1, word)||
-        find(board, i, j - 1, indx + 1, word);
-
-        board[i][j] = ch; // backtrack
-        return result;
+bool search(vector<vector<char>>&board,string word,int i, int j,int index){
+    int r=board.size();
+    int c=board[0].size();
+    if(index==word.size()){
+        return true;
     }
+    if(i < 0 || j < 0 || i >= r || j >= c || board[i][j] != word[index]) {
+            return false;
+        }
+      
+    
+    char temp=board[i][j];
+    board[i][j]='#';
+  
+   bool up=search(board,word,i,j+1,index+1);
+   bool down=search(board,word,i,j-1,index+1);
+   bool left=search(board,word,i-1,j,index+1);
+   bool right=search(board,word,i+1,j,index+1);
+   board[i][j]=temp;
+   return up||down||left||right;
 
+}
     bool exist(vector<vector<char>>& board, string word) {
-        int n = board.size();
-        int m = board[0].size();
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (board[i][j] == word[0] && find(board, i, j, 0, word)) {
+        int r=board.size();
+        int c=board[0].size();
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                 if(search(board,word,i,j,0)){
                     return true;
-                }
+                 }
+
             }
         }
+    
         return false;
     }
 };
