@@ -4,19 +4,18 @@ public:
         
         vector<ListNode*> result;
 
-        // Step 1: count nodes
+    //pahle mai sisze() nikalunga ki kitna element iske ander exit karte hai 
         int n = 0;
         ListNode* temp = head;
         while(temp != NULL){
             n++;
             temp = temp->next;
         }
-
-        // Step 2: size calculate
+//  kine element part mai hongy yeh dekh rahe hai aur kitne extra hai hamre pass yeh mmai dekh raha hu 
         int part = n / k;
         int extra = n % k;
 
-        // Step 3: split
+      //jitne part hongey utne baaar mai for loop chalunga 
         for(int i = 0; i < k; i++){
             ListNode* partHead = head;
             int size = part + (extra > 0 ? 1 : 0);
