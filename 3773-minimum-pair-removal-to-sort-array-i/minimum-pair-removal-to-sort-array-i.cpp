@@ -23,6 +23,10 @@ bool notsorted(vector<int>&nums){
              }
              nums[index]=nums[index]+nums[index+1];
              nums.erase(nums.begin()+index+1);
+             //Ye vector ke (index+1) position wale element ko delete karta hai
+//              //🔹 Delete hone ke baad kya hota hai?
+// Saare aage wale elements ek step left shift ho jaate hain
+// Vector ka size 1 kam ho jaata ha
              operation++;
         }
         return operation;
