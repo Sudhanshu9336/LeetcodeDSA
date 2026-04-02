@@ -11,21 +11,24 @@
  */
 class Solution {
 public:
-void minidi(TreeNode* root,vector<int>&arr){
+void diff(TreeNode* root,vector<int>&ans){
     if(root==NULL){
-        return ;
+        return;
     }
-    minidi(root->left,arr);
-    arr.push_back(root->val);
-    minidi(root->right,arr);
+diff(root->left,ans);
+ans.push_back(root->val);
+diff(root->right,ans);
 }
+
     int minDiffInBST(TreeNode* root) {
-        if(root==NULL)return 0;
-        vector<int>arr;
-        minidi(root,arr);
+        vector<int>ans;
+        if(root==NULL){
+            return 0;
+        }
+        diff(root,ans);
         int mini=INT_MAX;
-        for(int i=1;i<arr.size();i++){
-            mini=min(mini,arr[i]-arr[i-1]);
+        for(int i=1;i<ans.size();i++){
+            mini=min(mini,ans[i]-ans[i-1]);
         }
         return mini;
     }
