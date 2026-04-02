@@ -26,6 +26,6 @@ bool issame(TreeNode* p,TreeNode* q){
         }
         return isSubtree(root->left,subRoot)||  isSubtree(root->right,subRoot);
        
-
+//is question mai is two tree identical hai ya nahi concept bhi laga hai
     }
 };
