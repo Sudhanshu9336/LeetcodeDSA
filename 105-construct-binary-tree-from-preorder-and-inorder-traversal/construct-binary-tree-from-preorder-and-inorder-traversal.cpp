@@ -11,31 +11,33 @@
  */
 class Solution {
 public:
-int findposition(vector<int>&inorder,int element,int instart,int inend){
-    for(int i=instart;i<=inend;i++){
-        if(inorder[i]==element){
-            return i;
+int search(vector<int>&inorder,int val,int l,int r){
+    while(l<=r){
+        if(inorder[l]==val){
+            return l;
         }
+        l++;
     }
-    return -1;
+    return 0;
+}
+TreeNode* build(vector<int>& preorder, vector<int>& inorder,int &i,int l,int r){
+    if(l>r){
+        return NULL;
+    }
+TreeNode* root=new TreeNode(preorder[i]);
+i++;
+int index=search(inorder,preorder[i-1],l,r);
+root->left=build(preorder,inorder,i,l,index-1);
+root->right=build(preorder,inorder,i,index+1,r);
+return root;
+
 }
 
-    TreeNode* solve(vector<int>& preorder, vector<int>& inorder,int& prestart,int instart,int inend,int n){
-  if (prestart >= n || instart > inend) return NULL;
-
-
-    int element=preorder[prestart++];
-    TreeNode* root=new TreeNode(element);
-    int position=findposition(inorder,element,instart,inend);
-    root->left = solve(preorder, inorder, prestart, instart, position - 1, n);
-   root->right = solve(preorder, inorder, prestart, position + 1, inend, n);
-
-    return root;
-
-}
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        int index=0;
         int n=inorder.size();
-        int preoderderindex=0;
-        return solve(preorder,inorder,preoderderindex,0,n-1,n);
+        int l=0;
+        return  build(preorder,inorder,index,l,n-1);
+       
     }
 };
