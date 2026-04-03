@@ -1,31 +1,45 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 class Solution {
 public:
-    int posi(vector<int>& inorder, int element, int instart, int inend) {
-        for(int i = instart; i <= inend; i++) {
-            if(inorder[i] == element) {
-                return i;
-            }
+int search(vector<int>&inorder,int val,int l,int r){
+    while(l<=r){
+        if(inorder[l]==val){
+            return l;
         }
-        return -1;
+        l++;
     }
-
-    TreeNode* solve(vector<int>& inorder, vector<int>& postorder, int& postend, int instart, int inend) {
-        if(postend < 0 || instart > inend) return NULL;
-
-        int element = postorder[postend--];
-        TreeNode* root = new TreeNode(element);
-
-        int position = posi(inorder, element, instart, inend);
-
-        // Build right first, then left
-        root->right = solve(inorder, postorder, postend, position + 1, inend);
-        root->left = solve(inorder, postorder, postend, instart, position - 1);
-
-        return root;
+    return 0;
+}
+TreeNode* build(vector<int>& preorder, vector<int>& inorder,int &i,int l,int r){
+    if(r<l){
+        return NULL;
     }
+TreeNode* root=new TreeNode(preorder[i]);
+i--;
+int index=search(inorder,preorder[i+1],l,r);
+root->right=build(preorder,inorder,i,index+1,r);
+root->left=build(preorder,inorder,i,l,index-1);
+
+return root;
+
+}
 
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
-        int postend = postorder.size() - 1;
-        return solve(inorder, postorder, postend, 0, inorder.size() - 1);
+        int n=inorder.size();
+        int l=0;
+        int in=n-1;
+        return  build(postorder,inorder,in,l,n-1);
+       
     }
+    
 };
