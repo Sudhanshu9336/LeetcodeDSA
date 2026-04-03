@@ -12,40 +12,26 @@
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-          queue<TreeNode*>q;
-        vector<vector<int>>ans;
-            if(root==NULL) return ans;
-            bool odd=true;
+        if(root==NULL)return {};
+        queue<TreeNode*>q;
+        vector<vector<int>>res;
         q.push(root);
+        int l=1;
         while(!q.empty()){
-
-            vector<int>arr;
-            // TreeNode* temp=q.front();
-            int n=q.size();
-            for(int i=0;i<n;i++){
-                TreeNode* temp=q.front();
+                 int s=q.size();
+            vector<int>ans(s);
+       
+            for(int i=0;i<s;i++){
+                TreeNode* node=q.front();
                 q.pop();
-                arr.push_back(temp->val);
-            if(temp->left){
-                q.push(temp->left);
+                int index=(l==1)?i:(s-i-1);
+                ans[index]=node->val;
+                if(node->left)q.push(node->left);
+                if(node->right)q.push(node->right);
             }
-            if(temp->right){
-                q.push(temp->right);
-            }
-          
-            }
-            if(odd==true){
-              ans.push_back(arr);
-              odd=false;
-            }
-            else {
-                reverse(arr.begin(),arr.end());
-                ans.push_back(arr);
-                odd=true;
-            }
+            l=!l;
+            res.push_back(ans);
         }
-        return ans;
+        return res;
     }
-    
 };
-//maine level he order kiya hu bas bool laga ke even position ko ulta kar diya hu aur khuuch nahi kiya hu 
