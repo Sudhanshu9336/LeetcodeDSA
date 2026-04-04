@@ -1,27 +1,31 @@
 class Solution {
 public:
-void dfs(vector<vector<int>>& image,vector<vector<int>>&ans, int sr, int sc, int color,int drow[],int dcol[],int initialc){
-    ans[sr][sc]=color;
+void fill(vector<vector<int>>& image, int i, int j,int o, int c){
     int n=image.size();
     int m=image[0].size();
-    for(int i=0;i<4;i++){
-        int nrow=sr+drow[i];
-        int ncol=sc+dcol[i];
-        if(nrow>=0 &&ncol>=0 &&ncol<m && nrow<n&& image[nrow][ncol]==initialc && ans[nrow][ncol]!=color ){
-            dfs(image,ans,  nrow, ncol, color,drow,dcol,initialc);
-        }
+    if(i<0||i>=n||j<0||j>=m){
+        return ;
     }
+    if (image[i][j] != o){
+        return ;
+    }
+        
+
+        // fill color
+        image[i][j] = c;
+    fill(image,i+1,j,o,c);
+    fill(image,i-1,j,o,c);
+    fill(image,i,j+1,o,c);
+    fill(image,i,j-1,o,c);
+   
 }
-
-
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
-        int initialcolor=image[sr][sc];
-        int row=image.size();
-        int col=image[0].size();
-        vector<vector<int>>ans=image;
-        int drow[]={1,0,-1,-0};
-        int dcol[]={0,1,0,-1};
-      dfs(image,ans,sr,sc,color,drow,dcol,initialcolor);
-      return ans;
+        int oldcolor=image[sr][sc];
+        if(oldcolor==color){
+            return image;
+        }
+         fill(image,sr,sc,oldcolor,color);
+         return image;
+        
     }
 };
