@@ -9,6 +9,7 @@ void fill(vector<vector<int>>& image, int i, int j,int o, int c){
     if (image[i][j] != o){
         return ;
     }
+    //"Starting point se connected same-color region ko new color me convert karo""Starting point se connected same-color region ko new color me convert karo"
         
 
         // fill color
