@@ -8,13 +8,14 @@ public:
   }
     int right = solve(i, j+1, m, n, dp);
      int down  = solve(i+1, j, m, n, dp);
-         return dp[i][j] = right + down;
+         return dp[i][j] = right + down;//suppose that dp[0][0] = 2
+//                                               return 2;
 }
 
     int uniquePaths(int m, int n) {
         vector<vector<int>>dp(m,vector<int>(n,-1));
         int ans=solve(0,0,m,n,dp);
-        return ans;
+        return ans;// 2 return kar jayega
         
     }
 };
