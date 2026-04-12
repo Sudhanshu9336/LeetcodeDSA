@@ -1,11 +1,13 @@
 class Solution {
+
+//     Agar chhote bacche ko bada cookie de diya → waste ho jayega
+// Bada greed wala baad me satisfy nahi hoga
+// Smallest greed + smallest possible cookie
 public:
     int findContentChildren(vector<int>& g, vector<int>& s) {
         int count=0;
         sort(g.begin(),g.end());
-        // for(auto val:s){
-        //     sum=sum+val;
-        // }
+      
         sort(s.begin(),s.end());
          int l=0;
          int n=s.size();
